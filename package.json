@@ -7,8 +7,7 @@
     "type": "tsc -p src/app-public/tsconfig.json --noEmit",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:ci": "vitest run --coverage",
-    "prepare": "npm run build"
+    "test:ci": "vitest run --coverage"
   },
   "main": "./ksef-fe-invoice-converter.umd.cjs",
   "module": "./ksef-fe-invoice-converter.js",
