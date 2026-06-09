@@ -8,25 +8,25 @@ import { TCreatedPdf } from 'pdfmake/build/pdfmake';
 import { AdditionalDataTypes } from './types/common.types';
 import { generateFARR } from './FARR-generator';
 import { FaRR } from './types/FaRR.types';
-import { parseXML } from '@shared/XML-parser';
+import { parseXML, parseXMLString } from '@shared/XML-parser';
 import { i18nReady } from './i18n/i18n-init';
 
 export async function generateInvoice(
-  file: File,
+  xmlSource: File | string,
   additionalData: AdditionalDataTypes,
   formatType: 'blob'
 ): Promise<Blob>;
 export async function generateInvoice(
-  file: File,
+  xmlSource: File | string,
   additionalData: AdditionalDataTypes,
   formatType: 'base64'
 ): Promise<string>;
 export async function generateInvoice(
-  file: File,
+  xmlSource: File | string,
   additionalData: AdditionalDataTypes,
   formatType: FormatType = 'blob'
 ): Promise<FormatTypeResult> {
-  const xml: unknown = await parseXML(file);
+  const xml: unknown = xmlSource instanceof File ? await parseXML(xmlSource) : await parseXMLString(xmlSource);
   const wersja: any = (xml as any)?.Faktura?.Naglowek?.KodFormularza?._attributes?.kodSystemowy;
 
   let pdf: TCreatedPdf;
