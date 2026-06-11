@@ -4,3 +4,7 @@ export declare function formatDateTime(data?: string, withoutSeconds?: boolean, 
 export declare function formatDateTimePl(value: string, withTime?: boolean, withSeconds?: boolean): string;
 export declare function getDateTimeWithoutSeconds(isoDate?: FP2): string;
 export declare function formatTime(data?: string, withoutSeconds?: boolean): string;
+export declare function createVersionLabel(application?: string): string;
+export declare function unwrapText(value: any): any;
+export declare function pick<T extends Record<string, any>, K extends keyof T>(obj: T, keys: readonly K[]): any;
+export declare function hasAnyValue(value: unknown): boolean;

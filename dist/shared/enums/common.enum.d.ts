@@ -1,6 +1,7 @@
 export declare enum Position {
     LEFT = "left",
-    RIGHT = "right"
+    RIGHT = "right",
+    CENTER = "center"
 }
 export declare enum Answer {
     TRUE = "Tak",
@@ -12,6 +13,7 @@ export declare enum FormatTyp {
     Currency = "Currency",
     CurrencyAbs = "CurrencyAbs",
     CurrencyGreater = "CurrencyGreater",
+    CurrencyGreaterWithSeparator = "CurrencyGreaterWithSeparator",
     Currency6 = "Currency6",
     Default = "Default",
     Description = "Description",
@@ -38,7 +40,13 @@ export declare enum FormatTyp {
     Date = "Date",
     Time = "Time",
     FormOfPayment = "FormOfPayment",
+    AccountNumber = "AccountNumber",
     Percentage = "Percentage",
-    Number = "Number"
+    Number = "Number",
+    PEFHeaderContent = "PEFHeaderContent",
+    PEFSubHeaderContent = "PEFSubHeaderContent",
+    PEFValue = "PEFValue",
+    PEFInlineLabel = "PEFInlineLabel",
+    PEFTitle = "PEFTitle"
 }
 export default FormatTyp;
