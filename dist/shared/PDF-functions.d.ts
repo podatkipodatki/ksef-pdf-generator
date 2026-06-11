@@ -8,7 +8,7 @@ export declare function formatText(value: number | string | undefined | null, fo
 export declare function generateTable<T>(array: T[], keys: Partial<Record<keyof T, string>>): Content;
 export declare function normalizeCurrencySeparator(value: string | number | undefined): string;
 export declare function replaceDotWithCommaIfNeeded(value: string | number | undefined): string;
-export declare function hasValue(value: FP | string | number | undefined): boolean;
+export declare function hasValue(value: FP | string | number | undefined, zeroValidator?: boolean): boolean;
 export declare function getValue(value: FP | string | number | undefined): string | number | undefined;
 export declare function getNumber(value: FP | string | number | undefined): number;
 export declare function getNumberRounded(value: FP | string | number | undefined): number;
@@ -35,3 +35,4 @@ export declare function getKraj(code: string): string;
 export declare function getTStawkaPodatku(code: string, version: 1 | 2 | 3 | 'RR', P_PMarzy?: string): string;
 export declare function generateLine(): Content;
 export declare function makeBreakable(value: string | number | undefined, wordBreak?: number): string | number | undefined;
+export declare function formatBankAccountNumber(number: string): string;
