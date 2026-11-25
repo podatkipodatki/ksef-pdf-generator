@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
         entry: path.resolve(__dirname, libRoot, 'index.ts'),
         outDir: path.resolve(__dirname, 'dist'),
         emptyOutDir: true,
-        formats: ['es', 'umd'],
+        formats: ['es'],
         rollupOptions: {
           external: [/\.spec\.ts$/, /\.test\.ts$/, 'src/app-private', 'src/app-public'],
         },

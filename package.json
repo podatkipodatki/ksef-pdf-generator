@@ -9,15 +9,13 @@
     "test:ui": "vitest --ui",
     "test:ci": "vitest run --coverage"
   },
-  "main": "./dist/ksef-fe-invoice-converter.umd.cjs",
-  "module": "./dist/ksef-fe-invoice-converter.js",
+  "main": "./dist/ksef-fe-invoice-converter.js",
   "types": "./dist/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/ksef-fe-invoice-converter.js",
-      "require": "./dist/ksef-fe-invoice-converter.umd.cjs"
+      "import": "./dist/ksef-fe-invoice-converter.js"
     }
   },
   "files": [
