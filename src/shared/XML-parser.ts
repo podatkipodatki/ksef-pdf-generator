@@ -48,3 +48,21 @@ async function detectEncodingFile(file: File): Promise<Utf16Endiannes | 'utf-8'>
 
   return 'utf-8';
 }
+
+export function parseXMLString(xmlStr: string): Promise<unknown> {
+  return new Promise((resolve, reject): void => {
+    try {
+      const jsonDoc: Faktura = xml2js(xmlStr, {
+        compact: true,
+        cdataKey: '_text',
+        trim: true,
+        elementNameFn: stripPrefix,
+        attributeNameFn: stripPrefix,
+      }) as Faktura;
+
+      resolve(jsonDoc);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
