@@ -1,0 +1,43 @@
+# Build paczki i GitHub Release z plikiem .tgz po wypchnięciu tagu v<wersja-upstreamu>-pp.<N>.
+# Paczka nie trafia do rejestru npm - projekty zależą od URL-a pliku .tgz z Release'u.
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*-pp.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Testy
+        run: npx vitest run
+        env:
+          TZ: Europe/Warsaw
+
+      - name: Wersja paczki z tagu
+        run: npm version --no-git-tag-version "${GITHUB_REF_NAME#v}"
+
+      - run: npm run build
+
+      - name: Paczka .tgz
+        id: pack
+        run: echo "file=$(npm pack --silent)" >> "$GITHUB_OUTPUT"
+
+      - name: GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" "${{ steps.pack.outputs.file }}" --title "$GITHUB_REF_NAME" --notes "Build z tagu $GITHUB_REF_NAME (commit $GITHUB_SHA)."
